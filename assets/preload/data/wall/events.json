@@ -1,0 +1,39 @@
+{
+	"song": {
+		"speed": 3.2,
+		"stage": "chubsland",
+		"player1": "bf",
+		"player2": "chubino",
+		"player3": null,
+		"events": [
+			[
+				67764.7058823529,
+				[
+					[
+						"Change Character",
+						"dad",
+						"chubino-pissed"
+					],
+					[
+						"Add Camera Zoom",
+						"0.025",
+						"0.04"
+					],
+					[
+						"Screen Shake",
+						"0.2",
+						"0.03"
+					]
+				]
+			]
+		],
+		"notes": [],
+		"splashSkin": "noteSplashes",
+		"validScore": false,
+		"gfVersion": "gf",
+		"bpm": 170,
+		"arrowSkin": "",
+		"needsVoices": true,
+		"song": "Wall"
+	}
+}
