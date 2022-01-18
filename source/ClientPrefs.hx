@@ -67,6 +67,7 @@ class ClientPrefs {
 		//Key Bind, Name for ControlsSubState
 		'note_left'		=> [A, LEFT],
 		'note_down'		=> [S, DOWN],
+		'note_go'		=> [SPACE, NONE],
 		'note_up'		=> [W, UP],
 		'note_right'	=> [D, RIGHT],
 		

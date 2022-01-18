@@ -30,6 +30,7 @@ typedef SwagSong =
 	var arrowSkin:String;
 	var splashSkin:String;
 	var validScore:Bool;
+	var isMultiKey:Bool;
 }
 
 class Song

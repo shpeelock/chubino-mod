@@ -70,6 +70,9 @@ class Note extends FlxSprite
 	public var hitCausesMiss:Bool = false;
 	public var distance:Float = 2000;//plan on doing scroll directions soon -bb
 
+	public var is5K = PlayState.SONG.isMultiKey;
+
+
 	private function set_texture(value:String):String {
 		if(texture != value) {
 			reloadNote('', value);
@@ -123,6 +126,11 @@ class Note extends FlxSprite
 		isSustainNote = sustainNote;
 		this.inEditor = inEditor;
 
+		if (is5K)
+			{
+				swagWidth = 140 * 0.8;
+			}
+
 		x += (ClientPrefs.middleScroll ? PlayState.STRUM_X_MIDDLESCROLL : PlayState.STRUM_X) + 50;
 		// MAKE SURE ITS DEFINITELY OFF SCREEN?
 		y -= 2000;
@@ -139,16 +147,34 @@ class Note extends FlxSprite
 			x += swagWidth * (noteData % 4);
 			if(!isSustainNote) { //Doing this 'if' check to fix the warnings on Senpai songs
 				var animToPlay:String = '';
-				switch (noteData % 4)
+				if (is5K){
+					switch (noteData % 5)
+					{
+						case 0:
+							animToPlay = 'purple';
+						case 1:
+							animToPlay = 'blue';
+						case 2:
+							animToPlay = 'go';
+						case 3:
+							animToPlay = 'green';
+						case 4:
+							animToPlay = 'red';
+					}	
+				}
+				else
 				{
-					case 0:
-						animToPlay = 'purple';
-					case 1:
-						animToPlay = 'blue';
-					case 2:
-						animToPlay = 'green';
-					case 3:
-						animToPlay = 'red';
+					switch (noteData % 4)
+					{
+						case 0:
+							animToPlay = 'purple';
+						case 1:
+							animToPlay = 'blue';
+						case 2:
+							animToPlay = 'green';
+						case 3:
+							animToPlay = 'red';
+					}
 				}
 				animation.play(animToPlay + 'Scroll');
 			}
@@ -165,16 +191,34 @@ class Note extends FlxSprite
 			offsetX += width / 2;
 			copyAngle = false;
 
-			switch (noteData)
+			if(!is5K){
+				switch (noteData)
+				{
+					case 0:
+						animation.play('purpleholdend');
+					case 1:
+						animation.play('blueholdend');
+					case 2:
+						animation.play('goholdend');
+					case 3:
+						animation.play('greenholdend');
+					case 4:
+						animation.play('redholdend');
+				}
+			}
+			else
 			{
-				case 0:
-					animation.play('purpleholdend');
-				case 1:
-					animation.play('blueholdend');
-				case 2:
-					animation.play('greenholdend');
-				case 3:
-					animation.play('redholdend');
+				switch (noteData)
+				{
+					case 0:
+						animation.play('purpleholdend');
+					case 1:
+						animation.play('blueholdend');
+					case 2:
+						animation.play('greenholdend');
+					case 3:
+						animation.play('redholdend');
+				}
 			}
 
 			updateHitbox();
@@ -186,16 +230,34 @@ class Note extends FlxSprite
 
 			if (prevNote.isSustainNote)
 			{
-				switch (prevNote.noteData)
+				if(!is5K){
+					switch (prevNote.noteData)
+					{
+						case 0:
+							prevNote.animation.play('purplehold');
+						case 1:
+							prevNote.animation.play('bluehold');
+						case 2:
+							prevNote.animation.play('gohold');
+						case 3:
+							prevNote.animation.play('greenhold');
+						case 4:
+							prevNote.animation.play('redhold');
+					}
+				}
+				else
 				{
-					case 0:
-						prevNote.animation.play('purplehold');
-					case 1:
-						prevNote.animation.play('bluehold');
-					case 2:
-						prevNote.animation.play('greenhold');
-					case 3:
-						prevNote.animation.play('redhold');
+					switch (prevNote.noteData)
+					{
+						case 0:
+							prevNote.animation.play('purplehold');
+						case 1:
+							prevNote.animation.play('bluehold');
+						case 2:
+							prevNote.animation.play('greenhold');
+						case 3:
+							prevNote.animation.play('redhold');
+					}
 				}
 
 				prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.05;
@@ -286,6 +348,7 @@ class Note extends FlxSprite
 		animation.addByPrefix('redScroll', 'red0');
 		animation.addByPrefix('blueScroll', 'blue0');
 		animation.addByPrefix('purpleScroll', 'purple0');
+		if (is5K) animation.addByPrefix('goScroll', 'go0');
 
 		if (isSustainNote)
 		{
@@ -293,11 +356,13 @@ class Note extends FlxSprite
 			animation.addByPrefix('greenholdend', 'green hold end');
 			animation.addByPrefix('redholdend', 'red hold end');
 			animation.addByPrefix('blueholdend', 'blue hold end');
+			if (is5K) animation.addByPrefix('gohold', 'GO hold end'); 
 
 			animation.addByPrefix('purplehold', 'purple hold piece');
 			animation.addByPrefix('greenhold', 'green hold piece');
 			animation.addByPrefix('redhold', 'red hold piece');
 			animation.addByPrefix('bluehold', 'blue hold piece');
+			if (is5K) animation.addByPrefix('gohold', 'GO hold piece'); 
 		}
 
 		setGraphicSize(Std.int(width * 0.7));
