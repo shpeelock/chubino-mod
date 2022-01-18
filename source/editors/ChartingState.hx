@@ -142,6 +142,8 @@ class ChartingState extends MusicBeatState
 
 	var leftIcon:HealthIcon;
 	var rightIcon:HealthIcon;
+	var keyArray:Array<Int> = [4, 5];
+	var CHANGEABLE_GRID_SIZE:Int = 40;
 
 	var value1InputText:FlxUIInputText;
 	var value2InputText:FlxUIInputText;
@@ -212,7 +214,8 @@ class ChartingState extends MusicBeatState
 				gfVersion: 'gf',
 				speed: 1,
 				stage: 'stage',
-				validScore: false
+				validScore: false,
+				isMultiKey: false
 			};
 			addSection();
 			PlayState.SONG = _song;
@@ -323,7 +326,7 @@ class ChartingState extends MusicBeatState
 		UI_box = new FlxUITabMenu(null, tabs, true);
 
 		UI_box.resize(300, 400);
-		UI_box.x = 640 + GRID_SIZE / 2;
+		UI_box.x = 640 + GRID_SIZE / 2 + 40;
 		UI_box.y = 25;
 		UI_box.scrollFactor.set();
 
@@ -391,6 +394,18 @@ class ChartingState extends MusicBeatState
 		UI_songTitle = new FlxUIInputText(10, 10, 70, _song.song, 8);
 		blockPressWhileTypingOn.push(UI_songTitle);
 		
+		var is5KCheck = new FlxUICheckBox(10, 45, null, null, "is 5K", 100);
+		is5KCheck.checked = (_song.isMultiKey == true);
+		is5KCheck.callback = function()
+		{
+			_song.isMultiKey = false;
+			if (is5KCheck.checked)
+			{
+				_song.isMultiKey = true;		
+			}
+			updateGrid();
+		};
+
 		var check_voices = new FlxUICheckBox(10, 25, null, null, "Has voice track", 100);
 		check_voices.checked = _song.needsVoices;
 		// _song.needsVoices = check_voices.checked;
@@ -588,6 +603,7 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(UI_songTitle);
 
 		tab_group_song.add(check_voices);
+		tab_group_song.add(is5KCheck);
 		tab_group_song.add(clear_events);
 		tab_group_song.add(clear_notes);
 		tab_group_song.add(saveButton);
@@ -1384,9 +1400,33 @@ class ChartingState extends MusicBeatState
 
 	var lastConductorPos:Float;
 	var colorSine:Float = 0;
+	var fucku:Int = 0;
 	override function update(elapsed:Float)
 	{
 		curStep = recalculateSteps();
+		if (_song.isMultiKey) fucku = 1;
+		else fucku = 0;
+		if (fucku == 1 && gridBG.width != CHANGEABLE_GRID_SIZE * 10)
+		{
+			remove(gridBG);
+			gridBG = FlxGridOverlay.create(CHANGEABLE_GRID_SIZE, GRID_SIZE, CHANGEABLE_GRID_SIZE * 10, GRID_SIZE * 16);
+			add(gridBG);
+		}
+		if (fucku == 0 && gridBG.width != GRID_SIZE * 8)
+		{
+			remove(gridBG);
+			gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 8, GRID_SIZE * 16);
+			add(gridBG);
+		}
+		leftIcon.setPosition(0, -100);
+		rightIcon.setPosition(gridBG.width / 2, -100);
+		UI_box.x = FlxG.width / 2;// + 160 * _song.mania;
+		UI_box.y = 20;
+		if (fucku != 0)
+		{
+			UI_box.x = FlxG.width / 2 + 160;// + 160 * _song.mania;
+			UI_box.y = 100;
+		}
 
 		if(FlxG.sound.music.time < 0) {
 			FlxG.sound.music.pause();
@@ -2339,7 +2379,7 @@ class ChartingState extends MusicBeatState
 		var daStrumTime = i[0];
 		var daSus:Dynamic = i[2];
 
-		var note:Note = new Note(daStrumTime, daNoteInfo % 4, null, null, true);
+		var note:Note = new Note(daStrumTime, daNoteInfo % keyArray[fucku], null, null, true);
 		if(daSus != null) { //Common note
 			if(!Std.isOfType(i[3], String)) //Convert old note type to new note type format
 			{
@@ -2369,9 +2409,9 @@ class ChartingState extends MusicBeatState
 		note.x = Math.floor(daNoteInfo * GRID_SIZE) + GRID_SIZE;
 		if(isNextSection && _song.notes[curSection].mustHitSection != _song.notes[curSection+1].mustHitSection) {
 			if(daNoteInfo > 3) {
-				note.x -= GRID_SIZE * 4;
+				note.x -= GRID_SIZE * keyArray[fucku];
 			} else if(daSus != null) {
-				note.x += GRID_SIZE * 4;
+				note.x += GRID_SIZE * keyArray[fucku]; //i dont know
 			}
 		}
 
@@ -2688,7 +2728,8 @@ class ChartingState extends MusicBeatState
 			player3: null,
 			gfVersion: _song.gfVersion,
 			stage: _song.stage,
-			validScore: false
+			validScore: false,
+			isMultiKey: false
 		};
 		var json = {
 			"song": eventsSong
