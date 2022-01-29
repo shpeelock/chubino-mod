@@ -3,17 +3,21 @@
 	"difficulties": "chubs",
 	"hideFreeplay": false,
 	"weekBackground": "stage",
-	"weekBefore": "tutorial",
 	"freeplayColor": [
 		146,
 		113,
 		253
 	],
+	"weekBefore": "tutorial",
 	"startUnlocked": true,
-	"hideStoryMode": false,
+	"weekCharacters": [
+		"",
+		"bf",
+		""
+	],
 	"songs": [
 		[
-			"chubino",
+			"land",
 			"dad",
 			[
 				146,
@@ -40,10 +44,6 @@
 			]
 		]
 	],
-	"weekCharacters": [
-		"",
-		"bf",
-		""
-	],
+	"hideStoryMode": false,
 	"weekName": "chubino week"
 }

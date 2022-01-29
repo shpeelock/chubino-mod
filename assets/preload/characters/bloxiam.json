@@ -5,54 +5,54 @@
 				40,
 				0
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "idle",
-			"loop": false,
+			"indices": [],
 			"name": "Idle"
 		},
 		{
 			"offsets": [
 				0,
-				0
+				-20
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "right"
 		},
 		{
 			"offsets": [
-				0,
-				0
+				70,
+				-7
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "left"
 		},
 		{
 			"offsets": [
-				0,
-				0
+				-3,
+				-16
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "down"
 		},
 		{
 			"offsets": [
-				0,
-				0
+				-3,
+				-13
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "up"
 		}
 	],
@@ -62,12 +62,12 @@
 		-200,
 		-70
 	],
-	"healthicon": "face",
+	"healthicon": "bloxiam",
 	"flip_x": false,
 	"healthbar_colors": [
-		161,
-		161,
-		161
+		209,
+		45,
+		45
 	],
 	"camera_position": [
 		80,

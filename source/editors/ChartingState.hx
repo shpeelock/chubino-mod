@@ -72,6 +72,8 @@ class ChartingState extends MusicBeatState
 	[
 		['', "Nothing. Yep, that's right."],
 		['Hey!', "Plays the \"Hey!\" animation from Bopeebo,\nValue 1: BF = Only Boyfriend, GF = Only Girlfriend,\nSomething else = Both.\nValue 2: Custom animation duration,\nleave it blank for 0.6s"],
+		['Move Window', "Moves the window, \nValue 1: Changes the width, \n Value 2: Changes the height."],
+		['Reset Window', "Resets the window."],
 		['Set GF Speed', "Sets GF head bopping speed,\nValue 1: 1 = Normal speed,\n2 = 1/2 speed, 4 = 1/4 speed etc.\nUsed on Fresh during the beatbox parts.\n\nWarning: Value must be integer!"],
 		['Blammed Lights', "Value 1: 0 = Turn off, 1 = Blue, 2 = Green,\n3 = Pink, 4 = Red, 5 = Orange, Anything else = Random.\n\nNote to modders: This effect is starting to get \nREEEEALLY overused, this isn't very creative bro smh."],
 		['Kill Henchmen', "For Mom's songs, don't use this please, i love them :("],
@@ -810,6 +812,50 @@ class ChartingState extends MusicBeatState
 			}
 			updateGrid();
 		});
+		var duetButton:FlxButton = new FlxButton(10, 320, "Duet Notes", function()
+			{
+				var duetNotes:Array<Array<Dynamic>> = [];
+				for (note in _song.notes[curSection].sectionNotes)
+				{
+					var boob = note[1];
+					if (boob>3){
+						boob -= 4;
+					}else{
+						boob += 4;
+					}
+	
+					var copiedNote:Array<Dynamic> = [note[0], boob, note[2], note[3]];
+					duetNotes.push(copiedNote);
+				}
+	
+				for (i in duetNotes){
+				_song.notes[curSection].sectionNotes.push(i);
+	
+				}
+	
+				updateGrid();
+			});
+			var mirrorButton:FlxButton = new FlxButton(10, 350, "Mirror Notes", function()
+			{
+				var duetNotes:Array<Array<Dynamic>> = [];
+				for (note in _song.notes[curSection].sectionNotes)
+				{
+					var boob = note[1]%4;
+					boob = 3 - boob;
+					if (note[1] > 3) boob += 4;
+	
+					note[1] = boob;
+					var copiedNote:Array<Dynamic> = [note[0], boob, note[2], note[3]];
+					//duetNotes.push(copiedNote);
+				}
+	
+				for (i in duetNotes){
+				//_song.notes[curSection].sectionNotes.push(i);
+	
+				}
+	
+				updateGrid();
+			});
 		copyLastButton.setGraphicSize(80, 30);
 		copyLastButton.updateHitbox();
 
@@ -825,6 +871,8 @@ class ChartingState extends MusicBeatState
 		tab_group_section.add(swapSection);
 		tab_group_section.add(stepperCopy);
 		tab_group_section.add(copyLastButton);
+		tab_group_section.add(duetButton);
+		tab_group_section.add(mirrorButton);
 
 		UI_box.addGroup(tab_group_section);
 	}
@@ -2696,8 +2744,14 @@ class ChartingState extends MusicBeatState
 
 	function loadJson(song:String):Void
 	{
-		PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
-		MusicBeatState.resetState();
+		//make it look sexier if possible
+		if (CoolUtil.difficulties[PlayState.storyDifficulty] != "Normal"){
+			PlayState.SONG = Song.loadFromJson(song.toLowerCase()+"-"+CoolUtil.difficulties[PlayState.storyDifficulty], song.toLowerCase());
+	
+			}else{
+			PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
+			}
+			MusicBeatState.resetState();
 	}
 
 	function autosaveSong():Void

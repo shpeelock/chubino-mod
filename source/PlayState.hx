@@ -219,6 +219,10 @@ class PlayState extends MusicBeatState
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
 	var fastCar:BGSprite;
 
+	var moveWindow:Bool = false; //whenever to make the window move
+
+	var important:Array<Int>;
+
 	var upperBoppers:BGSprite;
 	var bottomBoppers:BGSprite;
 	var santa:BGSprite;
@@ -277,6 +281,10 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+
+		important = [Lib.application.window.x,Lib.application.window.y,Lib.application.window.width,Lib.application.window.height];
+		trace(important);
+
 		Paths.clearStoredMemory();
 
 		// for lua
@@ -2868,6 +2876,21 @@ class PlayState extends MusicBeatState
 
 	public function triggerEventNote(eventName:String, value1:String, value2:String) {
 		switch(eventName) {
+
+			case 'Move Window':
+				var resizeW:Int = Std.parseInt(value1);
+				var resizeH:Int = Std.parseInt(value2);
+				if(Math.isNaN(resizeW)) resizeW = 1280;
+				if(Math.isNaN(resizeH)) resizeH = 720;
+
+				if(!Math.isNaN(Std.parseFloat(value1)) || !Math.isNaN(Std.parseFloat(value2))) {
+					Lib.application.window.resize(resizeW,resizeH);
+					moveWindow = true;
+				}
+
+			case 'Reset Window':
+				resetWindow();
+
 			case 'Hey!':
 				var value:Int = 2;
 				switch(value1.toLowerCase().trim()) {
@@ -3287,6 +3310,14 @@ class PlayState extends MusicBeatState
 			});
 		}
 	}
+
+	function resetWindow():Void // reset window to normal
+		{
+			moveWindow = false;
+			Lib.application.window.move(important[0], important[1]);
+			Lib.application.window.resize(important[2], important[3]);
+			FlxG.fullscreen = true;
+		}
 
 	function snapCamFollowToPos(x:Float, y:Float) {
 		camFollow.set(x, y);

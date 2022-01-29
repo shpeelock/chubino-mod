@@ -1,6 +1,6 @@
 {
 	"song": {
-		"player1": "bf",
+		"player1": "bf-chubino",
 		"player2": "chubino-pissed",
 		"notes": [
 			{
@@ -4043,12 +4043,12 @@
 						0
 					],
 					[
-						101166.666666667,
+						101250,
 						1,
 						0
 					],
 					[
-						101250,
+						101166.666666667,
 						2,
 						0
 					]
@@ -4065,8 +4065,9 @@
 				"sectionNotes": [
 					[
 						101333.333333333,
-						0,
-						1250
+						2,
+						1250,
+						"Alt Animation"
 					]
 				],
 				"typeOfSection": 0,
@@ -4316,6 +4317,46 @@
 				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 180
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 180
+			},
+			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 180,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 180
+			},
+			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 180,
+				"changeBPM": false,
+				"mustHitSection": true
 			},
 			{
 				"sectionNotes": [],
@@ -4341,6 +4382,7 @@
 		"gfVersion": "gf",
 		"events": [],
 		"player3": null,
+		"mania": 3,
 		"song": "Mug",
 		"stage": "chubsland",
 		"validScore": true,
