@@ -3,47 +3,47 @@
 	"difficulties": "chubs",
 	"hideFreeplay": false,
 	"weekBackground": "stage",
+	"weekBefore": "tutorial",
 	"freeplayColor": [
 		146,
 		113,
 		253
 	],
-	"weekBefore": "tutorial",
 	"startUnlocked": true,
+	"hideStoryMode": false,
+	"songs": [
+		[
+			"land",
+			"chubino",
+			[
+				255,
+				255,
+				255
+			]
+		],
+		[
+			"wall",
+			"chubino",
+			[
+				255,
+				255,
+				255
+			]
+		],
+		[
+			"mug",
+			"chubino-pissed",
+			[
+				95,
+				93,
+				95
+			]
+		]
+	],
 	"weekCharacters": [
 		"",
 		"bf",
 		""
 	],
-	"songs": [
-		[
-			"land",
-			"dad",
-			[
-				146,
-				113,
-				253
-			]
-		],
-		[
-			"wall",
-			"dad",
-			[
-				146,
-				113,
-				253
-			]
-		],
-		[
-			"mug",
-			"dad",
-			[
-				146,
-				113,
-				253
-			]
-		]
-	],
-	"hideStoryMode": false,
 	"weekName": "chubino week"
 }
