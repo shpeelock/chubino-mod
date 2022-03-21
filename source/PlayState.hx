@@ -272,6 +272,10 @@ class PlayState extends MusicBeatState
 	// Less laggy controls
 	private var keysArray:Array<Array<Dynamic>>;
 
+	var moveWindow:Bool = false; //whenever to make the window move
+
+	var important:Array<Int>;
+
 	override public function create()
 	{
 
@@ -3390,6 +3394,15 @@ class PlayState extends MusicBeatState
 		}
 	}
 	#end
+
+	function resetWindow():Void // reset window to normal
+		{
+			moveWindow = false;
+			Lib.application.window.move(important[0], important[1]);
+			Lib.application.window.resize(important[2], important[3]);
+			FlxG.fullscreen = true;
+		}
+
 
 	public function KillNotes() {
 		while(notes.length > 0) {
