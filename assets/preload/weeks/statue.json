@@ -1,8 +1,36 @@
 {
+	"storyName": "Your New Week",
+	"difficulties": "chubs",
+	"hideFreeplay": false,
+	"weekBackground": "",
+	"weekBefore": "tutorial",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"startUnlocked": true,
+	"hideStoryMode": true,
 	"songs": [
 		[
 			"statue",
-			"dad",
+			"chubsman",
+			[
+				146,
+				113,
+				253
+			],
+			"anomaly",
+			"cheeker",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"anomaly",
+			"cheeker",
 			[
 				146,
 				113,
@@ -10,22 +38,10 @@
 			]
 		]
 	],
-	"hideFreeplay": false,
-	"weekBackground": "",
-	"difficulties": "chubs",
 	"weekCharacters": [
 		"",
 		"",
 		""
 	],
-	"storyName": "Your New Week",
-	"weekName": "Custom Week",
-	"freeplayColor": [
-		146,
-		113,
-		253
-	],
-	"hideStoryMode": true,
-	"weekBefore": "tutorial",
-	"startUnlocked": true
+	"weekName": "Custom Week"
 }
