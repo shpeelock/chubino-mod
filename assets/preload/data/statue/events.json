@@ -1,27 +1,27 @@
 {
 	"song": {
-		"speed": 2.5,
-		"stage": "chubsStatue",
-		"player1": "bf-chubino",
-		"player2": "chubsman",
-		"player3": null,
 		"events": [
 			[
 				57300,
 				[
-					[
-						"Camera Follow Pos",
-						"1000",
-						"860"
-					],
 					[
 						"Play Animation",
 						"special",
 						"dad"
 					],
 					[
-						"",
-						"",
+						"Set Cam Zoom",
+						"0.9",
+						""
+					]
+				]
+			],
+			[
+				57600,
+				[
+					[
+						"Set Cam Zoom",
+						"0.7",
 						""
 					]
 				]
@@ -36,15 +36,6 @@
 					]
 				]
 			]
-		],
-		"notes": [],
-		"splashSkin": "noteSplashes",
-		"validScore": false,
-		"gfVersion": "gf",
-		"bpm": 100,
-		"mania": 3,
-		"arrowSkin": "",
-		"needsVoices": true,
-		"song": "Statue"
+		]
 	}
 }

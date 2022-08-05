@@ -1,67 +1,116 @@
 {
 	"dialogue": [
 		{
-			"speed": 0.05,
-			"portrait": "bf",
-			"boxState": "normal",
-			"expression": "talk",
-			"text": "where the fuck am i"
-		},
-		{
+			"sound": "",
 			"speed": 0.05,
 			"portrait": "gf",
 			"boxState": "normal",
 			"expression": "talk",
-			"text": "Hi"
+			"text": "What?"
 		},
 		{
+			"sound": "",
 			"speed": 0.05,
 			"portrait": "bf",
 			"boxState": "normal",
 			"expression": "talk",
-			"text": "WHAT"
+			"text": "You can talk?"
 		},
 		{
-			"speed": 0.05,
-			"portrait": "bf",
-			"boxState": "normal",
-			"expression": "talk",
-			"text": "who said that"
-		},
-		{
+			"sound": "",
 			"speed": 0.05,
 			"portrait": "gf",
 			"boxState": "normal",
 			"expression": "talk",
-			"text": "down here Dumbass"
+			"text": "Yeah, you lost?"
 		},
 		{
+			"sound": "",
 			"speed": 0.05,
 			"portrait": "bf",
 			"boxState": "normal",
 			"expression": "talk",
-			"text": "have you seen a girl around here"
+			"text": "Maybe."
 		},
 		{
+			"sound": "",
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Emphasise on that 'maybe'."
+		},
+		{
+			"sound": "",
+			"speed": 0.06,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "I feel like someones following me.. Maybe whatever it is will be the key to get us out?"
+		},
+		{
+			"sound": "",
 			"speed": 0.05,
 			"portrait": "gf",
 			"boxState": "normal",
 			"expression": "talk",
-			"text": "what the fuck is a girl"
+			"text": "Well, whatever that is, i hope it isn't the thing i saw before i ended up here.."
 		},
 		{
+			"sound": "",
 			"speed": 0.05,
 			"portrait": "bf",
 			"boxState": "normal",
 			"expression": "talk",
-			"text": ""
+			"text": "Maybe if we make some noise.."
 		},
 		{
+			"sound": "",
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "And how?"
+		},
+		{
+			"sound": "",
 			"speed": 0.05,
 			"portrait": "bf",
 			"boxState": "normal",
 			"expression": "talk",
-			"text": "nevermind"
+			"text": "The only thing that makes the most sense, rap battling, duh."
+		},
+		{
+			"sound": "",
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Dude, i don't even know how to sing .."
+		},
+		{
+			"sound": "",
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Don’t worry, the laws of friday night funkin will handle that."
+		},
+		{
+			"sound": "",
+			"speed": 0.08,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "The laws of.. what?"
+		},
+		{
+			"sound": "",
+			"speed": 0.05,
+			"portrait": "gf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Okay.."
 		}
 	]
 }
